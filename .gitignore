@@ -1,0 +1,13 @@
+#需要过滤的文件夹目录
+test/.vs/
+test/Library/
+test/UnityPackageManager/
+test/Assets/Animations
+test/Assets/model
+test/Assets/All Packages Demo
+Demo/
+
+#需要过滤的文件
+*.csproj
+*.sln
+
