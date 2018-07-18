@@ -32,7 +32,7 @@ public class CubeMove : MonoBehaviour {
     private bool isAttack = false;
 
 
-    void FixedUpdate () {
+    void FixedUpdate() {
         // 初始化
         forward = new Vector3(Camera.transform.forward.x, 0, Camera.transform.forward.z);
         back = new Vector3(-Camera.transform.forward.x, 0, -Camera.transform.forward.z);
@@ -120,7 +120,7 @@ public class CubeMove : MonoBehaviour {
             anim.SetBool("isAttack", false);
         }
 
-        if(info.IsName("normal attack"))
+        if (info.IsName("normal attack"))
         {
             isAttack = true;
         }

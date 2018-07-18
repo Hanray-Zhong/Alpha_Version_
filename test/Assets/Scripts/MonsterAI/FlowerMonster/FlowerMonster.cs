@@ -12,7 +12,6 @@ public class FlowerMonster : MonoBehaviour {
     public GameObject shootPos;
 
     private Ray ray;
-    private RaycastHit hitInfo;
     private GameObject target;
     private Vector3 dir;
     private float distance;
@@ -26,6 +25,7 @@ public class FlowerMonster : MonoBehaviour {
 
     private void Update()
     {
+        RaycastHit hitInfo;
         Collider[] cols = Physics.OverlapSphere(transform.position, searchRadius, 1 << LayerMask.NameToLayer("Player"));
         if (cols.Length != 0)
         {

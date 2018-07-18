@@ -6,6 +6,7 @@ test/Assets/Animations
 test/Assets/model
 test/Assets/All Packages Demo
 Demo/
+test/Temp
 
 #需要过滤的文件
 *.csproj
