@@ -7,6 +7,7 @@ test/Assets/model
 test/Assets/All Packages Demo
 Demo/
 test/Temp
+test/Assets/Almgp_particle_vol_1
 
 #需要过滤的文件
 *.csproj
