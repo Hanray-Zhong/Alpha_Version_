@@ -29,7 +29,7 @@ public class CubeMove : MonoBehaviour {
 
     public bool isOnTheGround;
     private int moveDirValue = 0;
-    private bool isAttack = false;
+    public bool isAttack = false;
 
 
     void FixedUpdate() {
@@ -66,20 +66,20 @@ public class CubeMove : MonoBehaviour {
 
         // animator
         info = anim.GetCurrentAnimatorStateInfo(0);
-        if (!info.IsName("anm_dwarfHero_jump"))
+        if (!info.IsName("anm_jump"))
         {
             anim.SetBool("isJump", false);
         }
-        else if (info.IsName("anm_dwarfHero_jump") && info.normalizedTime >= 0.95f)
+        else if (info.IsName("anm_jump") && info.normalizedTime >= 0.95f)
         {
             anim.SetBool("isJump", false);
         }
 
         if (Input.GetKey(KeyCode.Space) && isOnTheGround)
         {
-            if (!info.IsName("anm_dwarfHero_jump"))
+            if (!info.IsName("anm_jump"))
             {
-                anim.Play("anm_dwarfHero_jump", 0, 0);
+                anim.Play("anm_jump", 0, 0);
             }
             anim.SetBool("isJump", true);
         }
@@ -94,7 +94,7 @@ public class CubeMove : MonoBehaviour {
             anim.SetBool("isMove", true);
         }
 
-        if (info.IsName("anm_dwarfHero_jump"))
+        if (info.IsName("anm_jump"))
         {
             if (!isOnTheGround && info.normalizedTime >= 0.4f)
             {
@@ -110,9 +110,9 @@ public class CubeMove : MonoBehaviour {
             anim.speed = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !info.IsName("normal attack") && !info.IsName("anm_dwarfHero_jump"))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !info.IsName("normal_attack") && !info.IsName("anm_jump"))
         {
-            anim.Play("normal attack");
+            anim.Play("normal_attack");
             anim.SetBool("isAttack", true);
         }
         else
@@ -120,11 +120,11 @@ public class CubeMove : MonoBehaviour {
             anim.SetBool("isAttack", false);
         }
 
-        if (info.IsName("normal attack"))
+        if (info.IsName("normal_attack"))
         {
             isAttack = true;
         }
-        else if (!info.IsName("normal attack") || info.normalizedTime >= 0.9f)
+        else if (!info.IsName("normal_attack") || info.normalizedTime >= 0.9f)
         {
             isAttack = false;
         }
@@ -143,6 +143,7 @@ public class CubeMove : MonoBehaviour {
         if (!isAttack)
         {
             transform.Translate(GetMoveDir(moveDirValue) * moveSpeed * Time.deltaTime, x_z_dir);
+            Debug.Log(GetMoveDir(moveDirValue));
         }
     }
 

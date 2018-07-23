@@ -7,8 +7,8 @@ public class Jump_animation : MonoBehaviour {
     public float jumpForce;
 
     private IsOnTheGround isOnTheGround;
-    private Vector3 originColliderPos = new Vector3(0, 0.9f, 0);
-    private Vector3 newColliderPos = new Vector3(0, 1.5f, 0);
+    private Vector3 originColliderPos = new Vector3(0, 0.71f, 0);
+    private Vector3 newColliderPos = new Vector3(0, 0.71f, 0);
 
     private void Update()
     {
