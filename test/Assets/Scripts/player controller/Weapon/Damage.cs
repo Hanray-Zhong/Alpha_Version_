@@ -8,10 +8,15 @@ public class Damage : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        MonsterUnit u = other.GetComponent<MonsterUnit>();
-        if (u != null)
+        MonsterUnit mu = other.GetComponent<MonsterUnit>();
+        if (mu != null)
         {
-            u.ApplyDamage(damage);
+            mu.ApplyDamage(damage);
+        }
+
+        BreakWall bw = other.GetComponent<BreakWall>();
+        if (bw != null){
+            bw.ApplyDamage(damage);
         }
     }
 }

@@ -19,6 +19,7 @@ public class needle : MonoBehaviour {
     private void Update()
     {
         currentHeight = transform.position.y;
+        // Debug.Log(transform.position.y);
 
         if (!CDStart && (currentHeight <= minHeight || currentHeight >= maxHeight))
         {

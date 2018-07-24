@@ -21,5 +21,8 @@ public class ShowHealth : MonoBehaviour {
         {
             Health_text.text = player_unit.health.ToString();
         }
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            Application.Quit();
+        }
     }
 }

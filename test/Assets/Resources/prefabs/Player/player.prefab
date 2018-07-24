@@ -444,7 +444,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503629794742904}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 13.95, y: 5.499, z: -31.468}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6312295, y: 0.6312295, z: 0.6312295}
   m_Children:
   - {fileID: 4655180489222368}
@@ -628,13 +628,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566721318316564}
-  m_LocalRotation: {x: -0.75413823, y: 0.23194875, z: -0.15087737, w: 0.59557647}
-  m_LocalPosition: {x: 0.02074715, y: 0.07274926, z: 0.3031609}
+  m_LocalRotation: {x: -0.7785009, y: 0.010567915, z: -0.102812655, w: 0.6190753}
+  m_LocalPosition: {x: -0.071, y: 0.089, z: 0.304}
   m_LocalScale: {x: 0.07759971, y: 0.07759981, z: 0.077599734}
   m_Children: []
   m_Father: {fileID: 4510295636342848}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 8.22, y: -12.589001, z: 101.936005}
+  m_LocalEulerAnglesHint: {x: -105.903, y: -39.195984, z: 31.643997}
 --- !u!23 &23175750330510006
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -694,7 +694,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65769167260779130
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -705,8 +705,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.63, y: 8.28, z: 0.26}
-  m_Center: {x: 0.000030517578, y: -1.12, z: -0.000005722046}
+  m_Size: {x: 1.63, y: 9.983087, z: 0.84}
+  m_Center: {x: 0.000029389812, y: -1.9715527, z: -0.0000052091195}
 --- !u!95 &95478776907627340
 Animator:
   serializedVersion: 3
@@ -805,6 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  anim: {fileID: 95478776907627340}
 --- !u!136 &136351896794480884
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -815,9 +816,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.34
-  m_Height: 1.42
+  m_Height: 1.3957641
   m_Direction: 1
-  m_Center: {x: 0, y: 0.71, z: 0}
+  m_Center: {x: -0, y: 0.72211784, z: 0}
 --- !u!137 &137257882320625066
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

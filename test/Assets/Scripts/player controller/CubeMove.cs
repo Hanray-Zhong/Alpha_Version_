@@ -143,7 +143,6 @@ public class CubeMove : MonoBehaviour {
         if (!isAttack)
         {
             transform.Translate(GetMoveDir(moveDirValue) * moveSpeed * Time.deltaTime, x_z_dir);
-            Debug.Log(GetMoveDir(moveDirValue));
         }
     }
 
