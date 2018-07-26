@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour {
         if (damage < health)
         {
             health -= damage;
+            anim.Play("Hit");
         }
 
         else

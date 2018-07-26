@@ -140,7 +140,7 @@ public class CubeMove : MonoBehaviour {
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
         x_z_dir.forward = new Vector3(Camera.transform.forward.x, 0, Camera.transform.forward.z);
-        if (!isAttack)
+        if (!isAttack && !info.IsName("Hit"))
         {
             transform.Translate(GetMoveDir(moveDirValue) * moveSpeed * Time.deltaTime, x_z_dir);
         }

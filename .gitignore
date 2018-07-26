@@ -4,10 +4,9 @@ test/Library/
 test/UnityPackageManager/
 test/Assets/Animations
 test/Assets/model
-test/Assets/All Packages Demo
+test/Assets/AssetsStores
 Demo/
 test/Temp
-test/Assets/Almgp_particle_vol_1
 
 #需要过滤的文件
 *.csproj
