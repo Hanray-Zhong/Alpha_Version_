@@ -10,7 +10,7 @@ public class needle : MonoBehaviour {
     public float damage;
     public int constCD;
 
-    private float currentHeight;
+    public float currentHeight;
     private Vector3 moveDir = new Vector3(0, 0, 0);
     private int CD = 0;
     private bool CDStart = false;
