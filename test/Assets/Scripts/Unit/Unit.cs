@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour {
     public float health = 100;             //生命值
+    public int gold = 0;
     public Animator anim;
 
 
