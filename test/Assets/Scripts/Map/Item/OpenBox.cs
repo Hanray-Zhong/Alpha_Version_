@@ -5,7 +5,7 @@ using UnityEngine;
 public class OpenBox : MonoBehaviour {
 
     public GameObject glod;
-
+    public int price;
     public float force;
 
     private bool isOpen = false;
@@ -24,7 +24,7 @@ public class OpenBox : MonoBehaviour {
         {
             GameObject newGold = Instantiate(glod, transform.position, glod.transform.rotation);
             newGold.GetComponent<Rigidbody>().AddForce((Vector3.up + Vector3.forward) * force * Time.deltaTime, ForceMode.Impulse);
-            newGold.GetComponent<GoldCoinRotate>().price = 20;
+            newGold.GetComponent<GoldCoinRotate>().price = price;
             isOpen = true;
         }
     }

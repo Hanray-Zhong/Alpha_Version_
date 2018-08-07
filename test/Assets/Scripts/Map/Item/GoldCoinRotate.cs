@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoldCoinRotate : MonoBehaviour {
 
 	public float rotateSpeed;
-    public int price = 5;
+    public int price;
 
 	void Update () {
 		transform.Rotate(transform.right * rotateSpeed * Time.deltaTime, Space.World);

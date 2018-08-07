@@ -234,7 +234,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180635074430774}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.90265656, z: 0}
+  m_LocalPosition: {x: 0, y: -3.7299793, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4918381854912010}
@@ -260,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695260450743934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.141, y: 1.3649998, z: 40.476}
+  m_LocalPosition: {x: -28.35, y: 1.3649998, z: 39.8}
   m_LocalScale: {x: 0.66582, y: 0.36042, z: 0.66582}
   m_Children:
   - {fileID: 4437781416944904}
@@ -277,7 +277,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473801812444510}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.90265656, z: 0}
+  m_LocalPosition: {x: 0, y: -3.7299793, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437781416944904}
@@ -290,7 +290,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625765554625300}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.90265656, z: 0}
+  m_LocalPosition: {x: -0, y: -3.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4475312756157328}
@@ -303,7 +303,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750203385755580}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.90265656, z: 0}
+  m_LocalPosition: {x: 0, y: -3.7299988, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4666038308700816}
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHeight: 2.56
-  minHeight: 2.36
+  minHeight: 2.26
   speed: 2
   damage: 5
   constCD: 100
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHeight: 2.56
-  minHeight: 2.36
+  minHeight: 2.26
   speed: 2
   damage: 5
   constCD: 100
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHeight: 2.56
-  minHeight: 2.36
+  minHeight: 2.26
   speed: 2
   damage: 5
   constCD: 100
@@ -819,7 +819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHeight: 2.56
-  minHeight: 2.36
+  minHeight: 2.26
   speed: 2
   damage: 5
   constCD: 100

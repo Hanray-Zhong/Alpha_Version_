@@ -34,5 +34,6 @@ public class Unit : MonoBehaviour {
     {
         anim.SetBool("isDead", true);
         GetComponent<CubeMove>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 }

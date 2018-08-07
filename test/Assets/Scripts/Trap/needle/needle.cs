@@ -30,12 +30,14 @@ public class needle : MonoBehaviour {
         else if (currentHeight <= minHeight && allowTOMove)
         {
             moveDir = Vector3.up;
+            transform.SetPositionAndRotation(new Vector3(transform.position.x, minHeight + 0.05f, transform.position.z), transform.rotation);
             CD = 0;
             CDStart = false;
         }
         else if (currentHeight >= maxHeight && allowTOMove)
         {
             moveDir = -Vector3.up;
+            transform.SetPositionAndRotation(new Vector3(transform.position.x, maxHeight - 0.05f, transform.position.z), transform.rotation);
             CD = 0;
             CDStart = false;
         }

@@ -6,6 +6,8 @@ public class Renew : MonoBehaviour {
     public GameObject[] objs;
     public Material black;
     public Material gray;
+    public GameObject door;
+    public float speed;
 
     private bool isLocked = true;
 
@@ -26,8 +28,11 @@ public class Renew : MonoBehaviour {
 
         if (!isLocked) 
         {
-            // open the door
-            Debug.Log("get!!!");
+            Transform transform = door.GetComponent<Transform>();
+            if (transform.position.y > 5)
+            {
+                transform.Translate(-Vector3.up * speed * Time.deltaTime, Space.World);
+            }
         }
     }
 

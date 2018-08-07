@@ -75,7 +75,7 @@ public class CubeMove : MonoBehaviour {
             anim.SetBool("isJump", false);
         }
 
-        if (Input.GetKey(KeyCode.Space) && isOnTheGround)
+        if (Input.GetKey(KeyCode.Space) && isOnTheGround && !info.IsName("Hit"))
         {
             if (!info.IsName("anm_jump"))
             {
