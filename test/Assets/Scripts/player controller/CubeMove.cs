@@ -19,6 +19,7 @@ public class CubeMove : MonoBehaviour {
 
     public float rotateSpeed;
     public float moveSpeed;
+    public bool isPushBox = false;
 
 
     private Vector3 forward;
@@ -34,6 +35,10 @@ public class CubeMove : MonoBehaviour {
 
     void FixedUpdate() {
         // 初始化
+        if (!isPushBox) 
+        {
+            moveSpeed = 5;
+        }
         forward = new Vector3(Camera.transform.forward.x, 0, Camera.transform.forward.z);
         back = new Vector3(-Camera.transform.forward.x, 0, -Camera.transform.forward.z);
         left = new Vector3(-Camera.transform.right.x, 0, -Camera.transform.right.z);

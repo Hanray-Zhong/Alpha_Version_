@@ -27,15 +27,21 @@ public class PushBoxes : MonoBehaviour {
         if (!Box_collider.GetComponent<PushBoxes>().isNearTheWall && other.tag == "Player" && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             // Box.transform.Translate(-transform.forward * pushSpeed * Time.deltaTime);
+            other.GetComponent<CubeMove>().isPushBox = true;
             Box.GetComponent<Rigidbody>().AddForce(-transform.forward * pushSpeed, ForceMode.VelocityChange);
             other.GetComponent<CubeMove>().moveSpeed = 3;
         }
     }
     private void OnTriggerExit(Collider other)
     {
+        CubeMove cb = other.GetComponent<CubeMove>();
         if (!Box_collider.GetComponent<PushBoxes>().isNearTheWall && other.tag == "Player" && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
-            other.GetComponent<CubeMove>().moveSpeed = 5;
+            cb.moveSpeed = 5;
+        }
+        if (cb != null)
+        {
+            cb.isPushBox = false;
         }
     }
 
