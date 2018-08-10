@@ -19,19 +19,23 @@ public class Change : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        foreach (var item in objs)
+        if (other.tag == "Player")
         {
-            if (item.GetComponent<Change>().currentMaterials.Equals("black"))
+            foreach (var item in objs)
             {
-                item.GetComponent<Renderer>().material = GameObject.Instantiate(gray);
-                item.GetComponent<Change>().currentMaterials = "gray";
-            }
-            else if (item.GetComponent<Change>().currentMaterials.Equals("gray"))
-            {
-                item.GetComponent<Renderer>().material = GameObject.Instantiate(black);
-                item.GetComponent<Change>().currentMaterials = "black";
+                if (item.GetComponent<Change>().currentMaterials.Equals("black"))
+                {
+                    item.GetComponent<Renderer>().material = GameObject.Instantiate(gray);
+                    item.GetComponent<Change>().currentMaterials = "gray";
+                }
+                else if (item.GetComponent<Change>().currentMaterials.Equals("gray"))
+                {
+                    item.GetComponent<Renderer>().material = GameObject.Instantiate(black);
+                    item.GetComponent<Change>().currentMaterials = "black";
+                }
             }
         }
+        
     }
 
 }

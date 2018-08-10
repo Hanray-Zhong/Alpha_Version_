@@ -77,7 +77,7 @@ public class CubeMove : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Space) && isOnTheGround && !info.IsName("Hit"))
         {
-            if (!info.IsName("anm_jump"))
+            if (!info.IsName("anm_jump") || (info.IsName("anm_jump") && info.normalizedTime >= 0.85f))
             {
                 anim.Play("anm_jump", 0, 0);
             }
