@@ -6,23 +6,26 @@ using UnityEngine.UI;
 public class ShowHealth : MonoBehaviour {
     public GameObject player;
 
-    private Text Health_text;
-    private Unit player_unit;
+    private Slider Health = null;
+    private Unit player_unit = null;
+    private Text health_text = null;
 
     private void Start()
     {
-        Health_text = gameObject.GetComponent<Text>();
+        Health = gameObject.GetComponent<Slider>();
+        health_text = gameObject.GetComponent<Text>();
         player_unit = player.GetComponent<Unit>();
     }
 
     private void Update()
     {
-        if (player_unit != null)
+        if (player_unit != null && Health != null)
         {
-            Health_text.text = player_unit.health.ToString();
+            Health.value = player_unit.health / 100;
         }
-        if (Input.GetKeyDown(KeyCode.Escape)){
-            Application.Quit();
+        if (health_text != null && player_unit != null)
+        {
+            health_text.text = player_unit.health.ToString() + "/100";
         }
     }
 }

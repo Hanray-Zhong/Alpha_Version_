@@ -30,6 +30,13 @@ public class TPS : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    private void Update()
+    {
+        if (Cursor.lockState == CursorLockMode.None) {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
     // private void Update()
     // {
     //     SrollView();

@@ -8,6 +8,8 @@ test/Assets/AssetsStores
 Demo/
 test/Temp
 test/Assets/Standard Assets
+test/Assets/Lens Flares
+test/Assets/PS2D
 
 #需要过滤的文件
 *.csproj

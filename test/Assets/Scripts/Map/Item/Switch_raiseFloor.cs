@@ -11,6 +11,8 @@ public class Switch_raiseFloor : MonoBehaviour {
 	private Transform floor_transform;
 
 	public float floor_height;
+	public float maxHeight;
+	public float minHeight;
 
 	public GameObject floor;
 	public float raise_speed;
@@ -25,14 +27,14 @@ public class Switch_raiseFloor : MonoBehaviour {
 		info = anim.GetCurrentAnimatorStateInfo(0);
 
 		if (isOpenSwitch) {
-			if (floor_height > 9.137f) {
-				floor_transform.SetPositionAndRotation(new Vector3(floor_transform.position.x, 9.137f - 0.05f, floor_transform.position.z), floor_transform.rotation);
+			if (floor_height > maxHeight) {
+				floor_transform.SetPositionAndRotation(new Vector3(floor_transform.position.x, maxHeight - 0.05f, floor_transform.position.z), floor_transform.rotation);
 				dir = -Vector3.up;
 				isOpenSwitch = false;
 			}
 
-			if (floor_height < 6.877f) {
-				floor_transform.SetPositionAndRotation(new Vector3(floor_transform.position.x, 6.877f + 0.05f, floor_transform.position.z), floor_transform.rotation);
+			if (floor_height < minHeight) {
+				floor_transform.SetPositionAndRotation(new Vector3(floor_transform.position.x, minHeight + 0.05f, floor_transform.position.z), floor_transform.rotation);
 				dir = Vector3.up;
 				isOpenSwitch = false;
 			}
@@ -41,7 +43,7 @@ public class Switch_raiseFloor : MonoBehaviour {
 		floor_transform.Translate(dir * raise_speed * Time.deltaTime, Space.World);
 
 		floor_height = floor_transform.position.y;
-		if (!isOpenSwitch && (floor_height > 9.137f || floor_height < 6.877f)) {
+		if (!isOpenSwitch && (floor_height > maxHeight || floor_height < minHeight)) {
 			dir = new Vector3(0, 0, 0);
 		}
 	}
