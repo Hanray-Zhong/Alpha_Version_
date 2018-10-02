@@ -29,7 +29,7 @@ public class CubeMove : MonoBehaviour {
     private AnimatorStateInfo info;
 
     public bool isOnTheGround;
-    private int moveDirValue = 0;
+    public int moveDirValue = 0;
     public bool isAttack = false;
 
 
@@ -158,7 +158,7 @@ public class CubeMove : MonoBehaviour {
         transform.rotation = Quaternion.Lerp(transform.rotation, quaDir, Time.fixedDeltaTime * rotateSpeed);
     }
 
-    private Vector3 GetMoveDir(int moveDirValue)
+    public Vector3 GetMoveDir(int moveDirValue)
     {
         Vector3 dir = new Vector3(0, 0, 0);
 

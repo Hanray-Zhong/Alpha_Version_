@@ -22,4 +22,8 @@ public class JianBian : MonoBehaviour {
 		canvasGroup.alpha = 0;
 	}
 
+	public void FadeClose() {
+		
+	}
+
 }
