@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotateBall : MonoBehaviour {
 
 	public GameObject Ball;
-	public float moveForce = 0;
+	public float rotateSpeed = 0;
 
 	private float trigger_ori_Height;
 	private float ball_ori_heiget;
@@ -23,8 +23,11 @@ public class RotateBall : MonoBehaviour {
 		if (other.tag == "Player") {
 			CubeMove cb = other.GetComponent<CubeMove>();
 			cb.moveSpeed = 1;
-			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-				Ball.transform.position = new Vector3(other.transform.position.x, ball_ori_heiget, other.transform.position.z);
+			Ball.transform.position = new Vector3(other.transform.position.x, ball_ori_heiget, other.transform.position.z);
+			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
+				Ball.transform.Rotate(other.transform.right, rotateSpeed, Space.World);
+			}
+				
 		}
 	}
 

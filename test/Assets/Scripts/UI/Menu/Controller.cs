@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour {
 	}
 
 	IEnumerator LoadLevel(string levelName) {
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(1f);
 		SceneManager.LoadScene(levelName);
 	}
 
