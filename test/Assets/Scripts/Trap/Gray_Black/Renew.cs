@@ -10,6 +10,12 @@ public class Renew : MonoBehaviour {
     public float speed;
 
     private bool isLocked = true;
+    private ChangeTarget changeTarget;
+    private bool needCheck = true;
+
+	private void Awake() {
+		changeTarget = GetComponent<ChangeTarget>();
+	}
 
     void Update() {
         isLocked = true;
@@ -33,6 +39,10 @@ public class Renew : MonoBehaviour {
             {
                 transform.Translate(-Vector3.up * speed * Time.deltaTime, Space.World);
             }
+            if (needCheck) {
+                this.ChangeTarget();
+                needCheck = false;
+            }
         }
     }
 
@@ -44,4 +54,10 @@ public class Renew : MonoBehaviour {
             item.GetComponent<Change>().currentMaterials = "gray";
         }
     }
+
+    private void ChangeTarget() {
+		if (changeTarget != null) {
+			changeTarget.Change();
+		}
+	}
 }

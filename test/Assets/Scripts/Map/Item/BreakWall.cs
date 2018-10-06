@@ -6,6 +6,7 @@ public class BreakWall : MonoBehaviour {
 
 	public GameObject breakWall;
 	public float health;
+    public GameObject TargetText;
 
 	private bool isDead = false;
 
@@ -30,8 +31,9 @@ public class BreakWall : MonoBehaviour {
 
     private void Destruct()
     {
-		Destroy(gameObject);
+        TargetText.SetActive(true);
         Instantiate(breakWall, transform.position, transform.rotation);
+		Destroy(gameObject);
     }
 
 }

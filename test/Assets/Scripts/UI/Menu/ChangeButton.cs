@@ -10,7 +10,6 @@ public class ChangeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 	public Sprite texture2;
 
 	public void OnPointerEnter(PointerEventData eventData) {
-        Debug.Log("进入");
         gameObject.GetComponent<Image>().sprite = texture2;
     }
 
