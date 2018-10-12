@@ -55,7 +55,6 @@ public class Switch_raiseFloor : MonoBehaviour {
             anim.Play("OpenSwitch", 0, 0);
 			if (isOpenSwitch == false)
 				isOpenSwitch = true;
-				Debug.Log("get!!");
         }
     }
 }

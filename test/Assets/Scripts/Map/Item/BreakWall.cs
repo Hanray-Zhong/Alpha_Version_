@@ -31,7 +31,9 @@ public class BreakWall : MonoBehaviour {
 
     private void Destruct()
     {
-        TargetText.SetActive(true);
+        if (TargetText != null) {
+            TargetText.SetActive(true);
+        }
         Instantiate(breakWall, transform.position, transform.rotation);
 		Destroy(gameObject);
     }

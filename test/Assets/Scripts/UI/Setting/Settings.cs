@@ -7,14 +7,13 @@ public class Settings : MonoBehaviour {
 
 	public GameObject menu;
 	public GameObject mohu;
-	public GameObject mousePointer;
+	public GameObject MainCamera;
 
 	
 	void Update () {
 		if (Input.GetKeyUp(KeyCode.Escape)) {
+			MainCamera.GetComponent<TPS>().MousePointNone();
 			Time.timeScale = 0;
-			Cursor.lockState = CursorLockMode.None;
-			mousePointer.GetComponent<TPS>().enabled = false;
 			mohu.SetActive(true);
 			menu.SetActive(true);
 		}
