@@ -103,7 +103,7 @@ public class CubeMove : MonoBehaviour {
         {
             if (!isOnTheGround && info.normalizedTime >= 0.4f)
             {
-                anim.speed = 0.05f;
+                anim.speed = 0.1f;
             }
             else
             {
