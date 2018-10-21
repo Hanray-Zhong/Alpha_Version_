@@ -16,7 +16,7 @@ public class IsOnTheGround : MonoBehaviour {
 
     private void Update()
     {
-        ray1 = new Ray(transform.position + new Vector3(0, 0, 0)     + new Vector3(0, 0.5f, 0), -Vector3.up);
+        ray1 = new Ray(transform.position + new Vector3(0, 0, 0)      + new Vector3(0, 0.5f, 0), -Vector3.up);
         ray2 = new Ray(transform.position + new Vector3(0.25f, 0, 0)  + new Vector3(0, 0.5f, 0), -Vector3.up);
         ray3 = new Ray(transform.position + new Vector3(-0.25f, 0, 0) + new Vector3(0, 0.5f, 0), -Vector3.up);
         ray4 = new Ray(transform.position + new Vector3(0, 0, 0.25f)  + new Vector3(0, 0.5f, 0), -Vector3.up);

@@ -139,3 +139,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 60
   price: 1
+  radius: 3
+  moveSpeed: 5

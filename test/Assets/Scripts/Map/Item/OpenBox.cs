@@ -9,7 +9,7 @@ public class OpenBox : MonoBehaviour {
     public float force;
 
     private bool isOpen = false;
-
+    private int coinNum = 0;
 	private Animator anim;
     private AnimatorStateInfo info;
 
@@ -22,10 +22,12 @@ public class OpenBox : MonoBehaviour {
         info = anim.GetCurrentAnimatorStateInfo(0);
         if (info.normalizedTime > 0.9f && !isOpen)
         {
-            GameObject newGold = Instantiate(glod, transform.position, glod.transform.rotation);
-            newGold.GetComponent<Rigidbody>().AddForce((Vector3.up + Vector3.forward) * force * Time.deltaTime, ForceMode.Impulse);
-            newGold.GetComponent<GoldCoinRotate>().price = price;
+            Debug.Log("get");
+            InvokeRepeating("CreatCoin", 0, 0.2f);
             isOpen = true;
+        }
+        if (coinNum >= 10) {
+            this.CancelInvoke();
         }
     }
 
@@ -35,5 +37,12 @@ public class OpenBox : MonoBehaviour {
         {
             anim.enabled = true;
         }
+    }
+
+    private void CreatCoin() {
+        GameObject newGold = Instantiate(glod, transform.position, glod.transform.rotation);
+        newGold.GetComponent<Rigidbody>().AddForce((transform.up - transform.right) * force * Time.deltaTime, ForceMode.Impulse);
+        newGold.GetComponent<GoldCoinRotate>().price = price;
+        coinNum++;
     }
 }

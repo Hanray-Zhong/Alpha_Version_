@@ -15,13 +15,15 @@ public class needle : MonoBehaviour {
     private int CD = 0;
     private bool CDStart = false;
     private bool allowTOMove = false;
+    private bool is_stop;
 
     private void Update()
     {
         currentHeight = transform.position.y;
         // Debug.Log(transform.position.y);
+        is_stop = GameObject.FindGameObjectWithTag("UIController").GetComponent<Settings>().is_stop;
 
-        if (!CDStart && (currentHeight <= minHeight || currentHeight >= maxHeight))
+        if (!CDStart && (currentHeight <= minHeight || currentHeight >= maxHeight) || is_stop)
         {
             CDStart = true;
             allowTOMove = false;

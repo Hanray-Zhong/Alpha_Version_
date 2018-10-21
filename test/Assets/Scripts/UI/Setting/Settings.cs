@@ -9,6 +9,8 @@ public class Settings : MonoBehaviour {
 	public GameObject mohu;
 	public GameObject MainCamera;
 
+	public bool is_stop = false;
+
 	
 	void Update () {
 		if (Input.GetKeyUp(KeyCode.Escape)) {

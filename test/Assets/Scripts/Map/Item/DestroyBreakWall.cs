@@ -15,7 +15,11 @@ public class DestroyBreakWall : MonoBehaviour {
 		{
 			foreach (Transform child in transform)
 			{
-    			child.gameObject.GetComponent<BoxCollider>().enabled = false;
+				if (child.gameObject.GetComponent<MeshCollider>() != null)
+    				child.gameObject.GetComponent<MeshCollider>().enabled = false;
+				if (child.gameObject.GetComponent<BoxCollider>() != null)
+    				child.gameObject.GetComponent<BoxCollider>().enabled = false;
+				
 			}
 		}
 		Destroy(gameObject, DestroyTime);

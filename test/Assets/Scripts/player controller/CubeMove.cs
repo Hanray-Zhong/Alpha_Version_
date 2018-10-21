@@ -27,17 +27,23 @@ public class CubeMove : MonoBehaviour {
     private Vector3 left;
     private Vector3 right;
     private AnimatorStateInfo info;
+    private float oriMoveSpeed;
+    private bool isNearWall = false;
 
     public bool isOnTheGround;
     public int moveDirValue = 0;
     public bool isAttack = false;
+
+    private void Awake() {
+        oriMoveSpeed = moveSpeed;
+    }
 
 
     void FixedUpdate() {
         // 初始化
         if (!isPushBox) 
         {
-            moveSpeed = 5;
+            moveSpeed = oriMoveSpeed;
         }
         forward = new Vector3(Camera.transform.forward.x, 0, Camera.transform.forward.z);
         back = new Vector3(-Camera.transform.forward.x, 0, -Camera.transform.forward.z);
@@ -145,7 +151,7 @@ public class CubeMove : MonoBehaviour {
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
         x_z_dir.forward = new Vector3(Camera.transform.forward.x, 0, Camera.transform.forward.z);
-        if (!isAttack && !info.IsName("Hit"))
+        if (!isAttack && !info.IsName("Hit") && !isNearWall)
         {
             transform.Translate(GetMoveDir(moveDirValue) * moveSpeed * Time.deltaTime, x_z_dir);
         }
@@ -231,5 +237,14 @@ public class CubeMove : MonoBehaviour {
         }
 
         return dir.normalized;
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.tag == "Map" && info.IsName("anm_jump") && info.normalizedTime <= 0.8f) {
+            isNearWall = true;
+        }
+        else {
+            isNearWall = false;
+        }
     }
 }

@@ -18,7 +18,7 @@ public class TextTrigger : MonoBehaviour {
 			TargetText.SetActive(true);
 			this.ChangeTarget();
 			canTrigger = false;
-			Destroy(gameObject, 2f);
+			Destroy(gameObject, 4f);
 		}
 
 	}
