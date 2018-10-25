@@ -238,13 +238,4 @@ public class CubeMove : MonoBehaviour {
 
         return dir.normalized;
     }
-
-    private void OnTriggerStay(Collider other) {
-        if (other.tag == "Map" && info.IsName("anm_jump") && info.normalizedTime <= 0.8f) {
-            isNearWall = true;
-        }
-        else {
-            isNearWall = false;
-        }
-    }
 }

@@ -16,7 +16,7 @@ public class XLine : MonoBehaviour {
 			Debug.DrawLine(oriPoint.transform.position, hitInfo.point);
 		}
 		else{
-			Sc.y = 100;
+			Sc.y = 100;		// 默认光线长度
 		}
 			
 		Line.transform.localScale = Sc;
