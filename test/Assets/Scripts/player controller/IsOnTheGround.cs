@@ -27,7 +27,12 @@ public class IsOnTheGround : MonoBehaviour {
                         Physics.Raycast(ray2, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("Map")) |
                         Physics.Raycast(ray3, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("Map")) |
                         Physics.Raycast(ray4, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("Map")) |
-                        Physics.Raycast(ray5, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("Map")) ;
+                        Physics.Raycast(ray5, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("Map")) |
+                        Physics.Raycast(ray1, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("MapItem")) |
+                        Physics.Raycast(ray2, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("MapItem")) |
+                        Physics.Raycast(ray3, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("MapItem")) |
+                        Physics.Raycast(ray4, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("MapItem")) |
+                        Physics.Raycast(ray5, out hitInfo, maxDistance, 1 << LayerMask.NameToLayer("MapItem")) ;
     }
 
 }

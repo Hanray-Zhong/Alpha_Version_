@@ -5,7 +5,6 @@ using UnityEngine;
 public class DeathPart : MonoBehaviour {
 
     public GameObject reveivePoint;
-    public GameObject reveivePoint_ball;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +15,7 @@ public class DeathPart : MonoBehaviour {
         }
 
         if (other.tag == "MapItem") {
-            // 再来一个球
+            Destroy(other.transform.parent.gameObject);
         }
     }
 }

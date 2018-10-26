@@ -28,7 +28,7 @@ public class ReflectLight : MonoBehaviour {
 
 
 	void Update () {
-		// 让光始终
+		// 让光始终沿着规定方向
 		Rotating(dir.x, dir.z);
 
 		if (oriPoint != null)
