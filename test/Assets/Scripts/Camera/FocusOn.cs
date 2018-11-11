@@ -2,29 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeTarget : MonoBehaviour {
+public class FocusOn : MonoBehaviour {
 
-	public GameObject MainCamera;
+	public GameObject[] Cameras;
+
 	public GameObject newCamera;
+	public GameObject MainCamera;
 	public GameObject Player;
 	public GameObject UIController;
-	public Animator anim;
+
 	public float changeTime;
 
-	private AnimatorStateInfo info;
-
-	private void Awake() {
-		info = anim.GetCurrentAnimatorStateInfo(0);
-	}
-	
-	public void Change() {
+	public void Focus() {
+		foreach (var camera in Cameras) {
+			if (camera.activeSelf == true) {
+				camera.SetActive(false);
+			}
+		}
 		Player.GetComponent<CubeMove>().enabled = false;
-		if (info.IsName("Run")) {
-            anim.Play("Idle", 0, 0);
-        }
 		if (UIController != null)
 			UIController.GetComponent<Settings>().is_stop = true;
-		MainCamera.SetActive(false);
 		newCamera.SetActive(true);
 		StartCoroutine(ChangeBack());
 	}

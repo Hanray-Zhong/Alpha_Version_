@@ -19,6 +19,12 @@ public class RotateBall : MonoBehaviour {
 		transform.position = new Vector3(Ball.transform.position.x, trigger_ori_Height, Ball.transform.position.z);
 	}
 
+	private void OnTriggerEnter(Collider other) {
+		if (other.tag == "Player") {
+			other.transform.position = new Vector3(Ball.transform.position.x, other.transform.position.y, Ball.transform.position.z);
+		}
+	}
+
 	private void OnTriggerStay(Collider other) {
 		if (other.tag == "Player") {
 			CubeMove cb = other.GetComponent<CubeMove>();

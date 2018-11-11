@@ -22,7 +22,6 @@ public class OpenBox : MonoBehaviour {
         info = anim.GetCurrentAnimatorStateInfo(0);
         if (info.normalizedTime > 0.9f && !isOpen)
         {
-            Debug.Log("get");
             InvokeRepeating("CreatCoin", 0, 0.2f);
             isOpen = true;
         }

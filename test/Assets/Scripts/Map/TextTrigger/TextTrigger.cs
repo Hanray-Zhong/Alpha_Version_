@@ -15,7 +15,8 @@ public class TextTrigger : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 		if (other.tag == "Player" && canTrigger) {
-			TargetText.SetActive(true);
+			if (TargetText != null)
+				TargetText.SetActive(true);
 			this.ChangeTarget();
 			canTrigger = false;
 			Destroy(gameObject, 4f);

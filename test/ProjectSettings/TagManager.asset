@@ -8,6 +8,9 @@ TagManager:
   - MapItem
   - UIController
   - Mirror
+  - light
+  - IronBall
+  - Crystals
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Player
   - Mirror
   - MapItem
-  - 
+  - light
   - 
   - 
   - 

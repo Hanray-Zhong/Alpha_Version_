@@ -39,7 +39,7 @@ public class Switch_rotate : MonoBehaviour {
 
 	private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.E) && info.normalizedTime > 0.95f)
+        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.E) && !canRotate)
         {
             anim.Play("OpenSwitch", 0, 0);
 			if (isOpenSwitch == false)

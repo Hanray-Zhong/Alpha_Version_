@@ -20,6 +20,7 @@ public class CubeMove : MonoBehaviour {
     public float rotateSpeed;
     public float moveSpeed;
     public bool isPushBox = false;
+    public bool isChangeCamera = false;
 
 
     private Vector3 forward;
@@ -41,14 +42,22 @@ public class CubeMove : MonoBehaviour {
 
     void FixedUpdate() {
         // 初始化
-        if (!isPushBox) 
-        {
+        if (!isPushBox) {
             moveSpeed = oriMoveSpeed;
         }
-        forward = new Vector3(Camera.transform.forward.x, 0, Camera.transform.forward.z);
-        back = new Vector3(-Camera.transform.forward.x, 0, -Camera.transform.forward.z);
-        left = new Vector3(-Camera.transform.right.x, 0, -Camera.transform.right.z);
-        right = new Vector3(Camera.transform.right.x, 0, Camera.transform.right.z);
+        if (isChangeCamera) {
+            forward = Vector3.right;
+            back = Vector3.left;
+            left = Vector3.forward;
+            right = Vector3.back;
+        }
+        else {
+            forward = new Vector3(Camera.transform.forward.x, 0, Camera.transform.forward.z);
+            back = new Vector3(-Camera.transform.forward.x, 0, -Camera.transform.forward.z);
+            left = new Vector3(-Camera.transform.right.x, 0, -Camera.transform.right.z);
+            right = new Vector3(Camera.transform.right.x, 0, Camera.transform.right.z);
+        }
+        
         moveDirValue = 0;
         isOnTheGround = gameObject.GetComponent<IsOnTheGround>().isOnTheGround;
         if (isOnTheGround)
@@ -58,118 +67,94 @@ public class CubeMove : MonoBehaviour {
         /*---------------------------------------------*/
 
 
-        if (Input.GetKey(KeyCode.W))
-        {
+        if (Input.GetKey(KeyCode.W)) {
             moveDirValue += (int)MoveDir.Up;
         }
-        if (Input.GetKey(KeyCode.S))
-        {
+        if (Input.GetKey(KeyCode.S)) {
             moveDirValue += (int)MoveDir.Down;
         }
-        if (Input.GetKey(KeyCode.A))
-        {
+        if (Input.GetKey(KeyCode.A)) {
             moveDirValue += (int)MoveDir.Left;
         }
-        if (Input.GetKey(KeyCode.D))
-        {
+        if (Input.GetKey(KeyCode.D)) {
             moveDirValue += (int)MoveDir.Right;
         }
 
         // animator
         info = anim.GetCurrentAnimatorStateInfo(0);
-        if (!info.IsName("anm_jump"))
-        {
+        if (!info.IsName("anm_jump")) {
             anim.SetBool("isJump", false);
         }
-        else if (info.IsName("anm_jump") && info.normalizedTime >= 0.95f)
-        {
+        else if (info.IsName("anm_jump") && info.normalizedTime >= 0.95f) {
             anim.SetBool("isJump", false);
         }
 
-        if (Input.GetKey(KeyCode.Space) && isOnTheGround && !info.IsName("Hit"))
-        {
-            if (!info.IsName("anm_jump") || (info.IsName("anm_jump") && info.normalizedTime >= 0.85f))
-            {
+        if (Input.GetKey(KeyCode.Space) && isOnTheGround && !info.IsName("Hit")) {
+            if (!info.IsName("anm_jump") || (info.IsName("anm_jump") && info.normalizedTime >= 0.85f)) {
                 anim.Play("anm_jump", 0, 0);
             }
             anim.SetBool("isJump", true);
         }
-        else if (moveDirValue == 0)
-        {
+        else if (moveDirValue == 0) {
             anim.SetBool("isJump", false);
             anim.SetBool("isMove", false);
         }
-        else
-        {
+        else {
             anim.SetBool("isJump", false);
             anim.SetBool("isMove", true);
         }
 
-        if (info.IsName("anm_jump"))
-        {
-            if (!isOnTheGround && info.normalizedTime >= 0.4f)
-            {
+        if (info.IsName("anm_jump")) {
+            if (!isOnTheGround && info.normalizedTime >= 0.4f) {
                 anim.speed = 0.1f;
             }
-            else
-            {
+            else {
                 anim.speed = 1;
             }
         }
-        if (isOnTheGround)
-        {
+        if (isOnTheGround) {
             anim.speed = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !info.IsName("normal_attack") && !info.IsName("anm_jump"))
-        {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !info.IsName("normal_attack") && !info.IsName("anm_jump")) {
             anim.Play("normal_attack");
             anim.SetBool("isAttack", true);
         }
-        else
-        {
+        else {
             anim.SetBool("isAttack", false);
         }
 
-        if (info.IsName("normal_attack"))
-        {
+        if (info.IsName("normal_attack")) {
             isAttack = true;
         }
-        else if (!info.IsName("normal_attack") || info.normalizedTime >= 0.9f)
-        {
+        else if (!info.IsName("normal_attack") || info.normalizedTime >= 0.9f) {
             isAttack = false;
         }
 
         Vector3 rotateDir = GetRotateDir(moveDirValue);
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-        {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             Rotating(rotateDir.x, rotateDir.z);
         }
-        else
-        {
+        else {
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
         x_z_dir.forward = new Vector3(Camera.transform.forward.x, 0, Camera.transform.forward.z);
-        if (!isAttack && !info.IsName("Hit") && !isNearWall)
-        {
+        if (!isAttack && !info.IsName("Hit") && !isNearWall) {
             transform.Translate(GetMoveDir(moveDirValue) * moveSpeed * Time.deltaTime, x_z_dir);
         }
     }
 
-    private void Rotating(float hor, float ver)
-    {  
+    private void Rotating(float hor, float ver) {  
         Vector3 dir = new Vector3(hor, 0, ver);  
         Quaternion quaDir = Quaternion.LookRotation(dir, Vector3.up);  
         transform.rotation = Quaternion.Lerp(transform.rotation, quaDir, Time.fixedDeltaTime * rotateSpeed);
     }
 
-    public Vector3 GetMoveDir(int moveDirValue)
-    {
+    public Vector3 GetMoveDir(int moveDirValue) {
         Vector3 dir = new Vector3(0, 0, 0);
 
-        switch (moveDirValue)
-        {
+        switch (moveDirValue) {
             case 1 :
                 dir.z = 1;
                 break;
@@ -204,12 +189,10 @@ public class CubeMove : MonoBehaviour {
         return dir;
     }
 
-    private Vector3 GetRotateDir(int moveDirValue)
-    {
+    private Vector3 GetRotateDir(int moveDirValue) {
         Vector3 dir = new Vector3(0, 0, 0);
 
-        switch (moveDirValue)
-        {
+        switch (moveDirValue) {
             case 1:// 前
                 dir = forward;
                 break;

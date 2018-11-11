@@ -12,6 +12,7 @@ public class ReflectLight : MonoBehaviour {
 	public float rotateSpeed;
 	public RaycastHit hitInfo;
 	public bool isTheFirstLight = false;
+	public GameObject hitObj;
 
 	private Ray ray;
 	private Vector3 dir;
@@ -24,6 +25,7 @@ public class ReflectLight : MonoBehaviour {
 	private void Awake() {
 		if (oriPoint != null)
 			dir = oriPoint.transform.forward;
+		hitObj = new GameObject();
 	}
 
 
@@ -63,11 +65,27 @@ public class ReflectLight : MonoBehaviour {
 			Debug.DrawLine(oriPoint.transform.position, hitInfo.point);
 		}
 		// 碰到其他的物体直接截断
-		else if (Physics.Raycast(ray, out hitInfo)) {
+		if (Physics.Raycast(ray, out hitInfo)) {
 			Sc.y = hitInfo.distance;
+
+			// 判断是不是照到了水晶上
+			if (hitInfo.transform.gameObject.tag == "Crystals") {
+				hitObj = hitInfo.transform.gameObject;
+				hitObj.GetComponent<Finish>().isOpen = true;
+			}
+			else {
+				if (hitObj.GetComponent<Finish>() != null) {
+					hitObj.GetComponent<Finish>().isOpen = false;
+					hitObj = new GameObject();
+				}
+			}
 		}
 		else {
 			Sc.y = 100;		// 默认光线长度
+			if (hitObj.GetComponent<Finish>() != null) {
+				hitObj.GetComponent<Finish>().isOpen = false;
+				hitObj = new GameObject();
+			}
 		}
 
 		// 没有照射到镜子上，取消反射

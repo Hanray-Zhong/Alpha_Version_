@@ -24,7 +24,8 @@ public class Switch_raiseFloor : MonoBehaviour {
 
 	void Update() {
 		floor_height = floor_transform.position.y;
-		info = anim.GetCurrentAnimatorStateInfo(0);
+		if (anim != null)
+			info = anim.GetCurrentAnimatorStateInfo(0);
 
 		if (isOpenSwitch) {
 			if (floor_height > maxHeight) {
@@ -40,7 +41,12 @@ public class Switch_raiseFloor : MonoBehaviour {
 			}
 		}
 
-		floor_transform.Translate(dir * raise_speed * Time.deltaTime, Space.World);
+		if (floor.activeInHierarchy == true) {
+			floor_transform.Translate(dir * raise_speed * Time.deltaTime, Space.World);
+		}
+		else {
+			isOpenSwitch = false;
+		}
 
 		floor_height = floor_transform.position.y;
 		if (!isOpenSwitch && (floor_height > maxHeight || floor_height < minHeight)) {
@@ -50,7 +56,7 @@ public class Switch_raiseFloor : MonoBehaviour {
 
 	private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.E) && info.normalizedTime > 0.95f)
+        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.E)&& anim != null && info.normalizedTime > 0.95f)
         {
             anim.Play("OpenSwitch", 0, 0);
 			if (isOpenSwitch == false)
