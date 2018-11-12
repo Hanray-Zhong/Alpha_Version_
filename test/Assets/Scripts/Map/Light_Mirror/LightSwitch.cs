@@ -18,6 +18,7 @@ public class LightSwitch : MonoBehaviour {
 
 	private void Update() {
 		if (Crystal_1.GetComponent<Finish>().isOpen && Crystal_2.GetComponent<Finish>().isOpen) {
+			
 			if (target.transform.position.y <= ori_Y_position) {
 				gameObject.GetComponent<ChangeTarget>().Change();
 			}

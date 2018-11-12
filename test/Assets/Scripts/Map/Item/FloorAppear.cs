@@ -13,6 +13,7 @@ public class FloorAppear : MonoBehaviour {
 		if (statue_1.GetComponent<Statue>().isOpen && statue_2.GetComponent<Statue>().isOpen) {
 			floor.SetActive(true);
 			floor.GetComponent<FocusOn>().Focus();
+			gameObject.GetComponent<FloorAppear>().enabled = false;
 		}
 	}
 }

@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class Switch_ChangeTarget : MonoBehaviour {
 
+	private bool turnoff = true;
+	public bool isOpenSwitch = false;
+
 	private void Update() {
-		if (gameObject.GetComponent<Switch_raiseFloor>() != null && gameObject.GetComponent<Switch_raiseFloor>().isOpenSwitch == true) {
+		if (isOpenSwitch && turnoff) {
 			gameObject.GetComponent<ChangeTarget>().Change();
-					gameObject.GetComponent<Switch_ChangeTarget>().enabled = false;
-		}
-		if (gameObject.GetComponent<CreatFloor>() != null && gameObject.GetComponent<CreatFloor>().isOpenSwitch == true) {
-			gameObject.GetComponent<ChangeTarget>().Change();
-					gameObject.GetComponent<Switch_ChangeTarget>().enabled = false;
+			turnoff = false;
 		}
 	}
+
+	private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.E))
+        {
+			if (isOpenSwitch == false)
+				isOpenSwitch = true;
+        }
+    }
 }
