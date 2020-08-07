@@ -1,2 +1,2 @@
-# Alpha_Version_
-A new repository of Alpha_Version; A ARPG game.
+# My FIrst Demo
+- A repository of a ARPG game.
